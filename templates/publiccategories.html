@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h1>{{categories.name}}</h1>
+  {% for i in items %}
+  <div>
+  </br>
+    <a href='{{url_for('itemDescription', item_id = i.id) }}'>{{i.name}}</a>
+    </br>
+  </div>
+  {% endfor %}
+</body>
+</html>

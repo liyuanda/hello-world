@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="col-md-2 text-right">
+    <a href="{{url_for('gdisconnect')}}">Click Here to Log out </a>
+  </div>
+  <h1>{{categories.name}}</h1>
+  <a href = '{{url_for('newCatItem', categories_id = categories.id) }}'>
+Create New Item</a>
+
+<!--MESSAGE FLASHING EXAMPLE -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+{% for message in messages %}
+  <li><strong>{{message}}</strong></li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+  {% for i in items %}
+  <div>
+  </br>
+    <a href='{{url_for('itemDescription', item_id = i.id) }}'>{{i.name}}</a>
+    </br>
+    <a href='{{url_for('editCatItem',
+     categories_id = categories.id, item_id = i.id) }}'>Edit</a>
+  </br>
+    <a href='{{url_for('deleteCatItem',
+     categories_id = categories.id, item_id = i.id) }}'>Delete</a>
+  </div>
+  {% endfor %}
+</body>
+</html>
